@@ -18,7 +18,8 @@
             <th>Action</th>
         </tr>
         <tr>
-            @if (count($tasks) > 0)
+            {{-- @if (isset($tasks) && count($tasks) > 0) --}}
+            @if (count($tasks) >= 0)
                 @foreach ($tasks as $task)
                 <tr>
                 {{-- phần tử của 1 list --}}
