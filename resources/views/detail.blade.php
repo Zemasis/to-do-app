@@ -7,7 +7,8 @@
     <title>{{$task->title}}</title>
 </head>
 <body>
-    <h1>{{$task->title}}</h1>
+    <h1>Number {{$task->id}}</h1>
+    <h3>{{$task->title}}</h3>
     <p>{{$task->description}}</p>
     <p>{{$task->long_description}}</p>
     <p>{{$task->completed ? 'Yes' : 'No'}}</p>
