@@ -1,7 +1,7 @@
     @extends('layouts.app')
     @section('content')
     @section('title', 'To do app')
-    <h1>To do app</h1>
+    {{-- <h1>To do app</h1> --}}
 
     <table>
         <tr>
@@ -23,7 +23,7 @@
                     <td>{{$task->long_description}}</td>
                     <td>{{$task->completed ? 'Yes' : 'No'}}</td>
                     <td>
-                        <a href="{{ route('task.detail', ['id' => $task->id]) }}">Detail</a>
+                        <a href="{{ route('tasks.detail', ['id' => $task->id]) }}">Detail</a>
                         <a href="">Edit</a>
                 </tr>
                 @endforeach
