@@ -2,7 +2,7 @@
     @section('content')
     @section('title', 'To do app')
     {{-- <h1>To do app</h1> --}}
-
+    <a href="{{ route('tasks.create') }}">Create new task</a>
     <table>
         <tr>
             <th>Task</th>
@@ -24,7 +24,13 @@
                     <td>{{$task->completed ? 'Yes' : 'No'}}</td>
                     <td>
                         <a href="{{ route('tasks.detail', ['id' => $task->id]) }}">Detail</a>
-                        <a href="">Edit</a>
+                        <a href="{{ route('tasks.edit', ['id' => $task->id]) }}">Edit</a>
+                        <form action="{{ route('tasks.delete', ['id' => $task->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+
                 </tr>
                 @endforeach
             @else
