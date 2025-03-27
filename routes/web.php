@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    $tasks = Task::orderBy('id','desc')->get();
+    $tasks = Task::orderBy('id','desc')->paginate(10);//hiện thị mỗi trang
     return view('index', ['tasks' => $tasks]);
 }) ->name('tasks.index');;
 
@@ -71,6 +71,13 @@ Route::delete('/tasks/{id}', function ($id) {
     $task->delete();
     return redirect()->route('tasks.index')->with('success', 'Task deleted successfully');
 })->name('tasks.delete');
+
+Route::put('/tasks/{id}/completed', function ($id) {
+    $task = Task::findOrFail($id);
+    $task->completed = !$task->completed; // Đảo ngược trạng thái completed
+    $task->save(); // Lưu lại thay đổi
+    return redirect()->route('tasks.index')->with('success', 'Task completed status updated successfully');
+})->name('tasks.completed');
 
 // Route::get('/greeting', function () {
 //     return "Hello World";
